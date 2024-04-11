@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   desc: string;
@@ -29,7 +29,7 @@ export class ProductsService {
     },
     {
       id: 3,
-      name: "Set de figurines Astérix et Obélix",
+      name: "Set de figurines\nAstérix et Obélix",
       desc: "Contient des figurines d'Astérix et Obélix, ainsi que d'autres personnages de la série comme Idéfix, Abraracourcix ou Falbala.",
       price: 8,
       picture: "./assets/img/set-figurine.jpg",
