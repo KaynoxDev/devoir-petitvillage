@@ -1,0 +1,33 @@
+.social {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-right: 10px;
+  width: 50%;
+}
+
+.foot-about {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  color: var(--secondary-color);
+  width: 40%;
+  padding-left: 10px;
+}
+
+h3 {
+  font-family: "Bubbleboddy";
+  font-size: 18px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-brands {
+  font-size: 24px;
+  margin: 0 5px;
+}
