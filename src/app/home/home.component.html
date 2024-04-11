@@ -1,1 +1,68 @@
-<p>home works!</p>
+<main role="main">
+  <div class="about-container">
+    <section class="sect-about">
+      <h1>Au petit village</h1>
+      <p>
+        <strong>Au petit village</strong> est une entreprise qui confectionne
+        des figurines inspirées de la bande dessinée Astérix et Obélix.
+      </p>
+    </section>
+    <section class="sect-listProduct">
+      <h1>Catalogue de produits</h1>
+
+      <div class="row">
+        <div class="col-12 col-md-3">
+          <select
+            id="sort-by"
+            class="form-select"
+            [(ngModel)]="sortBy"
+            (change)="sortProducts()"
+          >
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Rechercher un produit"
+              [(ngModel)]="searchTerm"
+              (input)="filterProducts()"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row products-list">
+        <div class="col-12 col-md-12" *ngFor="let product of filteredProducts">
+          <div class="card flex-wrap">
+            <img
+              src="{{ product.picture }}"
+              class="card-img-top img-fluid"
+              alt="{{ product.name }}
+                  "
+            />
+            <div class="card-body">
+              <div *ngIf="selectedProductId as productId"></div>
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">
+                Prix: {{ product.price | currency : "EUR" }}
+              </p>
+              <button
+                type="button"
+                class="btn btn-product"
+                (click)="viewProduct(product.id)"
+              >
+                Voir le produit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
