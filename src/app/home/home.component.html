@@ -1,29 +1,28 @@
 <main role="main">
   <div class="about-container">
     <section class="sect-about">
-      <h1>Au petit village</h1>
-      <p>
-        <strong>Au petit village</strong> est une entreprise qui confectionne
-        des figurines inspirées de la bande dessinée Astérix et Obélix.
-      </p>
+      <!-- Votre contenu sur l'entreprise -->
     </section>
     <section class="sect-listProduct">
       <h1>Catalogue de produits</h1>
 
+      <!-- Sélecteur de tri et barre de recherche -->
       <div class="row">
-        <div class="col-12 col-md-3">
+        <div class="col-12">
+          <!-- Sélecteur de tri -->
           <select
             id="sort-by"
             class="form-select"
-            [(ngModel)]="sortBy"
-            (change)="sortProducts()"
+            (change)="sortProducts($event)"
           >
-            <option value="price-asc">Prix croissant</option>
-            <option value="price-desc">Prix décroissant</option>
+            <option *ngFor="let option of ['asc', 'desc']" [value]="option">
+              {{ option === "asc" ? "Prix croissant" : "Prix décroissant" }}
+            </option>
           </select>
         </div>
       </div>
 
+      <!-- Barre de recherche -->
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="input-group mb-3">
@@ -32,19 +31,28 @@
               class="form-control"
               placeholder="Rechercher un produit"
               [(ngModel)]="searchTerm"
-              (input)="filterProducts()"
             />
           </div>
         </div>
       </div>
+
+      <!-- Liste des produits -->
       <div class="row products-list">
-        <div class="col-12 col-md-12" *ngFor="let product of filteredProducts">
+        <!-- Boucle sur les produits -->
+        <div
+          class="col-12 col-md-4"
+          *ngFor="
+            let product of products
+              | filterByName : searchTerm
+              | sortByPrice : order
+          "
+        >
+          <!-- Carte de produit -->
           <div class="card flex-wrap">
             <img
-              src="{{ product.picture }}"
+              [src]="product.picture"
               class="card-img-top img-fluid"
-              alt="{{ product.name }}
-                  "
+              [alt]="product.name"
             />
             <div class="card-body">
               <div *ngIf="selectedProductId as productId"></div>

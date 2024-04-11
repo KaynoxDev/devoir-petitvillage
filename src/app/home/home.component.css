@@ -65,3 +65,6 @@ section.sect-about {
   height: 300px;
   width: 300px;
 }
+
+@media (min-width: 992px) {
+}
